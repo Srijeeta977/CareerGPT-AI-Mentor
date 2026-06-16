@@ -21,9 +21,14 @@ def get_skill_gap(selected_role, user_skills):
 
     missing_skills = []
 
+    user_skills_lower = [
+    skill.lower().strip()
+    for skill in user_skills
+    ]
+
     for skill in required_skills:
 
-        if skill not in user_skills:
+        if skill.lower().strip() not in user_skills_lower:
             missing_skills.append(skill)
 
     return required_skills, missing_skills

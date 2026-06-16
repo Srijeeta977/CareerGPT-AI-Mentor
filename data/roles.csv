@@ -1,7 +1,13 @@
 Role,Skills
-Machine Learning Engineer,"Python,Machine Learning,Deep Learning,TensorFlow,PyTorch,MLOps"
+
 AI Engineer,"Python,Machine Learning,Deep Learning,NLP,TensorFlow,PyTorch"
-Data Scientist,"Python,Statistics,Pandas,NumPy,SQL,Machine Learning"
+
+Machine Learning Engineer,"Python,Machine Learning,Deep Learning,TensorFlow,PyTorch,MLOps"
+
+Data Scientist,"Python,Statistics,SQL,Pandas,NumPy,Machine Learning"
+
 Frontend Developer,"HTML,CSS,JavaScript,React,Bootstrap"
+
 Backend Developer,"Python,Django,Flask,SQL,APIs"
+
 Cybersecurity Analyst,"Network Security,Ethical Hacking,Linux,Wireshark,Python"

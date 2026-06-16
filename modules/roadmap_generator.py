@@ -1,16 +1,39 @@
-def generate_roadmap(role, missing_skills):
+from modules.llm_service import generate_response
 
-    roadmap = f"""
-Target Role: {role}
+def generate_roadmap(
+    role,
+    skills,
+    missing_skills,
+    resume_text
+):
+
+    prompt = f"""
+You are an expert career mentor.
+
+Resume Content:
+{resume_text}
+
+Detected Skills:
+{', '.join(skills)}
+
+Target Role:
+{role}
 
 Missing Skills:
 {', '.join(missing_skills)}
 
-Learning Plan:
+Generate a personalized career roadmap.
+
+Include:
+
+1. Summary of current profile
+2. Strengths identified from resume
+3. Missing skills to focus on
+4. Week-by-week learning roadmap
+5. Recommended projects
+6. Interview preparation tips
+
+Keep the roadmap practical for a college student.
 """
 
-    for i, skill in enumerate(missing_skills, start=1):
-
-        roadmap += f"\nWeek {i}: Learn {skill}"
-
-    return roadmap
+    return generate_response(prompt)
