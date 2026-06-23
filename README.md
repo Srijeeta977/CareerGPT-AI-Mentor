@@ -270,12 +270,6 @@ Contributions, feature suggestions, and improvements are welcome.
 
 ---
 
-## 📜 License
-
-This project is licensed under the MIT License.
-
----
-
 ## 👩‍💻 Author
 
 ### Srijeeta Dutta
@@ -293,3 +287,11 @@ LinkedIn:
 ---
 
 ⭐ If you found this project useful, consider giving the repository a star.
+
+---
+
+Copyright (c) 2026 Srijeeta Dutta
+
+All Rights Reserved.
+
+This source code may not be copied, modified, distributed, or used in any form without explicit written permission from the author.
