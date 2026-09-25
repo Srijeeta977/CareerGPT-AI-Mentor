@@ -273,7 +273,7 @@ if uploaded_file:
         )
         st.divider()
 
-    tab1, tab2, tab3, tab4 = st.tabs(
+        tab1, tab2, tab3, tab4 = st.tabs(
         [
             "📄 Resume Advisor",
             "🛣 Career Roadmap",
@@ -281,122 +281,181 @@ if uploaded_file:
             "📚 Learning Resources"
         ]
     )
+
+    # Create session state for AI results
+    if "resume_advice" not in st.session_state:
+        st.session_state.resume_advice = None
+
+    if "career_roadmap" not in st.session_state:
+        st.session_state.career_roadmap = None
+
+    if "interview_questions" not in st.session_state:
+        st.session_state.interview_questions = None
+
+    if "learning_resources" not in st.session_state:
+        st.session_state.learning_resources = None
+
+
+    # -----------------------------
+    # Resume Advisor
+    # -----------------------------
+
     with tab1:
 
-        advice = analyze_resume(
-            resume_text
+        st.subheader("📄 AI Resume Advisor")
+
+        st.write(
+            "Get AI-powered feedback based on your uploaded resume."
         )
 
-        st.text_area(
-            "Resume Analysis",
-            advice,
-            height=500
-        )
+        if st.button("✨ Analyze My Resume", key="resume_advisor_btn"):
+
+            with st.spinner("Analyzing your resume..."):
+
+                try:
+
+                    st.session_state.resume_advice = analyze_resume(
+                        resume_text
+                    )
+
+                except Exception as e:
+
+                    st.session_state.resume_advice = (
+                        f"⚠️ AI service error:\n\n{str(e)}"
+                    )
+
+        if st.session_state.resume_advice:
+
+            st.markdown("### 📊 Resume Analysis")
+
+            st.markdown(
+                st.session_state.resume_advice
+            )
+
+
+    # -----------------------------
+    # Career Roadmap
+    # -----------------------------
+
     with tab2:
 
-        roadmap = generate_roadmap(
-            role,
-            skills,
-            missing_skills,
-            resume_text
+        st.subheader("🛣 Personalized Career Roadmap")
+
+        st.write(
+            "Generate a roadmap based on your resume, target role and skill gaps."
         )
 
-        st.text_area(
-            "Career Roadmap",
-            roadmap,
-            height=500
-        )
+        if st.button("🚀 Generate Career Roadmap", key="roadmap_btn"):
+
+            with st.spinner("Creating your personalized roadmap..."):
+
+                try:
+
+                    st.session_state.career_roadmap = generate_roadmap(
+                        role,
+                        skills,
+                        missing_skills,
+                        resume_text
+                    )
+
+                except Exception as e:
+
+                    st.session_state.career_roadmap = (
+                        f"⚠️ AI service error:\n\n{str(e)}"
+                    )
+
+        if st.session_state.career_roadmap:
+
+            st.markdown("### 🗺 Your Roadmap")
+
+            st.markdown(
+                st.session_state.career_roadmap
+            )
+
+
+    # -----------------------------
+    # Interview Questions
+    # -----------------------------
+
     with tab3:
 
-        questions = generate_interview_questions(
-            role,
-            skills,
-            missing_skills,
-            resume_text
+        st.subheader("🎤 AI Interview Preparation")
+
+        st.write(
+            "Generate interview questions specifically based on your resume and target role."
         )
 
-        st.text_area(
-            "Interview Questions",
-            questions,
-            height=500
-        )
+        if st.button(
+            "🎯 Generate Interview Questions",
+            key="interview_btn"
+        ):
+
+            with st.spinner("Generating personalized interview questions..."):
+
+                try:
+
+                    st.session_state.interview_questions = (
+                        generate_interview_questions(
+                            role,
+                            skills,
+                            missing_skills,
+                            resume_text
+                        )
+                    )
+
+                except Exception as e:
+
+                    st.session_state.interview_questions = (
+                        f"⚠️ AI service error:\n\n{str(e)}"
+                    )
+
+        if st.session_state.interview_questions:
+
+            st.markdown("### 🎯 Your Interview Questions")
+
+            st.markdown(
+                st.session_state.interview_questions
+            )
+
+
+    # -----------------------------
+    # Learning Resources
+    # -----------------------------
+
     with tab4:
 
-        resources = generate_learning_resources(
-            role,
-            missing_skills
+        st.subheader("📚 Personalized Learning Resources")
+
+        st.write(
+            "Get learning recommendations based on your missing skills."
         )
 
-        st.text_area(
-            "Learning Resources",
-            resources,
-            height=500
-        )
-    # st.divider()
+        if st.button(
+            "📚 Generate Learning Resources",
+            key="resources_btn"
+        ):
 
-    # if st.button("Analyze Resume"):
+            with st.spinner("Finding relevant learning resources..."):
 
-    #     advice = analyze_resume(
-    #         resume_text
-    #     )
+                try:
 
-    #     st.subheader("AI Resume Advisor")
+                    st.session_state.learning_resources = (
+                        generate_learning_resources(
+                            role,
+                            missing_skills
+                        )
+                    )
 
-    #     st.text_area(
-    #         "Resume Analysis",
-    #         advice,
-    #         height=400
-    #     )
-    # st.divider()
+                except Exception as e:
 
-    # if st.button("Generate Career Roadmap"):
+                    st.session_state.learning_resources = (
+                        f"⚠️ AI service error:\n\n{str(e)}"
+                    )
 
-    #     roadmap = generate_roadmap(
-    #     role,
-    #     skills,
-    #     missing_skills,
-    #     resume_text
-    # )
+        if st.session_state.learning_resources:
 
-    #     st.subheader("Career Roadmap")
+            st.markdown("### 📖 Recommended Resources")
 
-    #     st.text_area(
-    #         "Roadmap",
-    #         roadmap,
-    #         height=300
-    #     )
-    # st.divider()
-
-    # if st.button("Generate Interview Questions"):
-
-    #     questions = generate_interview_questions(
-    #         role,
-    #         skills,
-    #         missing_skills,
-    #         resume_text
-    #     )
-
-    #     st.subheader("Interview Questions")
-
-    #     st.text_area(
-    #         "Questions",
-    #         questions,
-    #         height=400
-    #     )
-    # st.divider()
-
-    # if st.button("Recommend Learning Resources"):
-
-    #     resources = generate_learning_resources(
-    #         role,
-    #         missing_skills
-    #     )
-
-    #     st.subheader("Learning Resources")
-
-    #     st.text_area(
-    #         "Resources",
-    #         resources,
-    #         height=400
-    #     )
-        
+            st.markdown(
+                st.session_state.learning_resources
+            )

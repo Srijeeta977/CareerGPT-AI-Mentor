@@ -1,14 +1,36 @@
 from groq import Groq
 from dotenv import load_dotenv
 import os
+import streamlit as st
 
 load_dotenv()
 
-client = Groq(
-    api_key=os.getenv("GROQ_API_KEY")
-)
+
+def get_api_key():
+    # Local development: read from .env
+    api_key = os.getenv("GROQ_API_KEY")
+
+    # Streamlit Cloud: read from Streamlit Secrets
+    if not api_key:
+        try:
+            api_key = st.secrets["GROQ_API_KEY"]
+        except Exception:
+            api_key = None
+
+    return api_key
+
 
 def generate_response(prompt):
+
+    api_key = get_api_key()
+
+    if not api_key:
+        raise RuntimeError(
+            "GROQ_API_KEY is not configured. "
+            "Add GROQ_API_KEY to Streamlit Secrets."
+        )
+
+    client = Groq(api_key=api_key)
 
     try:
 
@@ -20,20 +42,14 @@ def generate_response(prompt):
                     "content": prompt
                 }
             ],
-            temperature=0.7
+            temperature=0.7,
+            max_completion_tokens=1500
         )
 
         return response.choices[0].message.content
 
-    except Exception:
+    except Exception as e:
 
-        return """
-⚠️ AI service is temporarily unavailable.
-
-Possible reasons:
-• API token limit reached
-• Network issue
-• Groq service unavailable
-
-Please try again later.
-"""
+        raise RuntimeError(
+            f"Groq API Error: {str(e)}"
+        )
