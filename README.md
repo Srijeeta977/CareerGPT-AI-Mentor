@@ -6,12 +6,17 @@ CareerGPT is an intelligent career mentoring platform that analyzes resumes, ide
 
 The platform helps students and aspiring professionals understand their readiness for industry roles and provides actionable recommendations to improve employability.
 
+> **Internship Project:** Developed as part of the **Edunet Foundation | IBM SkillsBuild | AICTE 6-Week Artificial Intelligence Internship** (May–June 2026).
+
 ---
 
 ## 🌐 Live Demo
 
-**Deployed Application:**
+**Deployed Application:**  
 https://careergpt-ai-mentor-mnwvyxf99bhfsm3hp93jrm.streamlit.app/
+
+**Source Code:**  
+https://github.com/Srijeeta977/CareerGPT-AI-Mentor
 
 ---
 
@@ -34,28 +39,29 @@ https://careergpt-ai-mentor-mnwvyxf99bhfsm3hp93jrm.streamlit.app/
 
 ### 🔍 Skill Gap Detection
 
-* Compares candidate skills with industry-required skills
+* Compares candidate skills with role-specific required skills
 * Highlights missing competencies
 
 ### 📋 AI Resume Advisor
 
-* Reviews resumes and provides improvement suggestions
+* Reviews resumes and provides personalized improvement suggestions
 * Helps improve ATS-friendliness and profile strength
 
 ### 🛣 Personalized Career Roadmap
 
 * Generates step-by-step learning paths
-* Recommends skills to acquire for target roles
+* Recommends skills to acquire for the selected target role
+* Uses the candidate's resume and identified skill gaps for personalization
 
-### 🎤 Interview Preparation
+### 🎤 AI Interview Preparation
 
-* Generates technical and HR interview questions
-* Tailored according to selected role and candidate profile
+* Generates dynamic technical and HR interview questions
+* Tailored according to the selected role, existing skills, missing skills, and resume context
 
 ### 📚 Learning Resource Recommendation
 
 * Suggests courses, certifications, YouTube channels, and practice platforms
-* Personalized according to identified skill gaps
+* Personalized according to identified skill gaps and target role
 
 ---
 
@@ -78,8 +84,8 @@ https://careergpt-ai-mentor-mnwvyxf99bhfsm3hp93jrm.streamlit.app/
 4. Compare Skills with Target Role
 5. Calculate Role Compatibility
 6. Detect Missing Skills
-7. Generate AI Recommendations
-8. Create Learning Roadmap
+7. Generate AI Resume Feedback
+8. Create Personalized Career Roadmap
 9. Generate Interview Questions
 10. Recommend Learning Resources
 
@@ -98,7 +104,7 @@ https://careergpt-ai-mentor-mnwvyxf99bhfsm3hp93jrm.streamlit.app/
 ### AI & LLM
 
 * Groq API
-* Llama 3.3 70B Versatile
+* OpenAI GPT-OSS 120B
 
 ### Data Processing
 
@@ -108,6 +114,7 @@ https://careergpt-ai-mentor-mnwvyxf99bhfsm3hp93jrm.streamlit.app/
 ### Environment Management
 
 * Python Dotenv
+* Streamlit Secrets for deployed environments
 
 ### Version Control
 
@@ -230,11 +237,13 @@ pip install -r requirements.txt
 
 ### Configure Environment Variables
 
-Create a `.env` file:
+For local development, create a `.env` file:
 
 ```env
 GROQ_API_KEY=your_api_key_here
 ```
+
+For Streamlit deployment, configure `GROQ_API_KEY` through Streamlit Secrets instead of committing the key to the repository.
 
 ### Run Application
 
@@ -256,6 +265,8 @@ Free-tier Groq accounts may occasionally experience:
 
 If a limit is reached, please wait for the cooldown period and try again.
 
+**Security:** API keys should never be committed to GitHub. Use a local `.env` file for development and Streamlit Secrets for deployment.
+
 ---
 
 ## 🤝 Contributing
@@ -276,13 +287,13 @@ Contributions, feature suggestions, and improvements are welcome.
 
 B.Tech in Artificial Intelligence & Machine Learning
 
-Passionate about AI, Machine Learning, Career Technology, and Intelligent Software Systems.
+Passionate about Artificial Intelligence, Machine Learning, Generative AI, Career Technology, and Intelligent Software Systems.
 
-GitHub:
+**GitHub:**  
 https://github.com/Srijeeta977
 
-LinkedIn:
-(Add your LinkedIn profile link here)
+**LinkedIn:**  
+https://www.linkedin.com/in/srijeeta-dutta-a06b36318/
 
 ---
 
